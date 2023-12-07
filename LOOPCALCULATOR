@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loop Calculation</title>
+  <style>
+     *{
+      margin: 0;
+      padding: 0;    
+        }
+     body{
+          font-family: Arial, sans-serif;
+          width: 100%;
+          height: 100vh;
+          background-image:linear-gradient(
+          rgba(0,0,0,0.75),
+          rgba(0,0,0,0.75)), url(https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg);
+          background-size: cover;
+          background-repeat: no-repeat;
+    
+        }
+        .container {
+      max-width: 500px;
+      margin: auto;
+      padding: 30px;
+      background-color: rgba(240, 240, 240, 0.35);
+      border: 2px solid black;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 100px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="number"] {
+      width: 90%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #0087FF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #5FFFDF;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    </style>
+</head>
+<body>
+  <div class="container">
+  <h1>Loop Calculation</h1>
+  <label for="number">Enter a number:</label>
+  <input type="number" id="number">
+  <br><br>
+  <button onclick="calculate()">Calculate</button>
+  <div class="result">
+    <p id="factorial"></p>
+    <p id="sum"></p>
+    <p id="average"></p>
+
+  </div>
+    <script>
+        function calculate() {
+      var number = parseInt(document.getElementById("number").value);
+      var factorial = 1;
+      var sum = 0;
+
+      var i = 1;
+      while (i <= number) {
+        factorial *= i;
+        sum += i;
+        i++;
+      }
+
+      var average = sum / number;
+
+      document.getElementById("factorial").innerHTML = "Factorial: " + factorial;
+      document.getElementById("sum").innerHTML = "Sum: " + sum;
+      document.getElementById("average").innerHTML = "Average: " + average;
+    }
+  
+        </script>
+  
+</body>
+</html>
