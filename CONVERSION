@@ -1,0 +1,129 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Conversion</title>
+  <style> 
+    *{
+      margin: 0;
+      padding: 0;    
+    }
+    body{
+      font-family: Arial, sans-serif;
+      width: 100%;
+      height: 100vh;
+      background-image:linear-gradient(
+      rgba(0,0,0,0.75),
+      rgba(0,0,0,0.75)), url(https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg);
+      background-size: cover;
+      background-repeat: no-repeat;
+    
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      padding: 30px;
+      background-color: rgba(240, 240, 240, 0.35);
+      border: 2px solid black;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 100px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    input[type="number"] {
+      width: 90%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: 600;
+      color: cyan;
+    }
+
+    button {
+      background-color: #0087FF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: blue;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Conversion</h1>
+    <div id="conversionForm">
+      <label for="celsius">Celsius to Fahrenheit:</label>
+      <input type="number" id="celsius" placeholder="Celsius">
+      <button onclick="celsiusToFahrenheit()">Convert</button>
+      <div id="celsiusToFahrenheitResult" class="result"></div>
+
+      <label for="fahrenheit">Fahrenheit to Celsius:</label>
+      <input type="number" id="fahrenheit" placeholder="Fahrenheit">
+      <button onclick="fahrenheitToCelsius()">Convert</button>
+      <div id="fahrenheitToCelsiusResult" class="result"></div>
+
+      <label for="meters">Meters to Feet:</label>
+      <input type="number" id="meters" placeholder="Meters">
+      <button onclick="metersToFeet()">Convert</button>
+      <div id="metersToFeetResult" class="result"></div>
+
+      <label for="feet">Feet to Meters:</label>
+      <input type="number" id="feet" placeholder="Feet">
+      <button onclick="feetToMeters()">Convert</button>
+      <div id="feetToMetersResult" class="result"></div>
+    </div>
+  </div>
+    
+  
+</body>
+<script>
+function celsiusToFahrenheit() {
+      var celsius = parseFloat(document.getElementById('celsius').value);
+      var fahrenheit = (celsius * 9/5) + 32;
+      document.getElementById('celsiusToFahrenheitResult').innerHTML = fahrenheit + " F";
+    }
+
+    function fahrenheitToCelsius() {
+      var fahrenheit = parseFloat(document.getElementById('fahrenheit').value);
+      var celsius = (fahrenheit - 32) * 5/9;
+      document.getElementById('fahrenheitToCelsiusResult').innerHTML = celsius + " C";
+    }
+
+    function metersToFeet() {
+      var meters = parseFloat(document.getElementById('meters').value);
+      var feet = meters * 3.28084;
+      document.getElementById('metersToFeetResult').innerHTML = feet + " ft";
+    }
+
+    function feetToMeters() {
+      var feet = parseFloat(document.getElementById('feet').value);
+      var meters = feet / 3.28084;
+      document.getElementById('feetToMetersResult').innerHTML = meters + " m";
+    }
+    </script>
+
+</html>
