@@ -1,0 +1,97 @@
+ <!DOCTYPE html>
+ <html>
+    <head>
+    <title>
+        Income Tax Calculator
+    </title>
+    <style>
+        *{
+      margin: 0;
+      padding: 0;    
+        }
+     body{
+          font-family: Arial, sans-serif;
+          width: 100%;
+          height: 100vh;
+          background-image:linear-gradient(
+          rgba(0,0,0,0.75),
+          rgba(0,0,0,0.75)), url(https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg);
+          background-size: cover;
+          background-repeat: no-repeat;
+    
+        }
+        .container {
+      max-width: 500px;
+      margin: auto;
+      padding: 30px;
+      background-color: rgba(240, 240, 240, 0.35);
+      border: 2px solid black;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 100px;
+    }
+        h1 {
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #0087FF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5FFFDF;
+        }
+        
+        .result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+    <body>
+    <div class="container">
+        <h1>Income Tax Calculator</h1>
+        <div class="form-group">
+            <label for="income">Annual Income:</label>
+            <input type="number" id="income" placeholder="Enter annual income">
+        </div>
+        <div class="form-group">
+            <label for="taxRate">Tax Rate:</label>
+            <input type="number" id="taxRate" placeholder="Enter tax rate">
+        </div>
+        <button onclick="calculateTax()">Calculate</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    
+</body>
+<script>
+    function calculateTax() {
+            var income = document.getElementById('income').value;
+            var taxRate = document.getElementById('taxRate').value;
+            var tax = (income * taxRate) / 100;
+            
+            document.getElementById('result').innerHTML = 'Tax to be paid: $' + tax.toFixed(2);
+        }
+    </script>
+ </html>
