@@ -2,20 +2,19 @@
 <html>
 <head>
   <title>Conversion</title>
-  <style> 
-    *{
+  <style>
+    * {
       margin: 0;
-      padding: 0;    
+      padding: 0;
     }
-    body{
+
+    body {
       font-family: Arial, sans-serif;
       width: 100%;
-      background-image:linear-gradient(
-      rgba(0,0,0,0.75),
-      rgba(0,0,0,0.75)), url(https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg);
+      background-image: url(https://i.pinimg.com/736x/5d/fa/a2/5dfaa2648b32ce60235049fa7540935d.jpg);
       background-size: cover;
       background-repeat: no-repeat;
-    
+      background-color: #404040; 
     }
 
     .container {
@@ -31,17 +30,17 @@
 
     h1 {
       text-align: center;
-      color: white;
+      color: black; 
     }
 
     label {
       display: block;
       margin-bottom: 10px;
       font-weight: 600;
-      color: white;
+      color: black;
     }
 
-    input{
+    input {
       width: 90%;
       padding: 10px;
       border-radius: 5px;
@@ -73,29 +72,31 @@
       color: red;
       margin-top: 10px;
     }
-    .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            border-radius: 10px;
 
-        }
-        .modal-content {
-            background-color: white;
-            margin: 25% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 20%;
-            text-align: center;
-        }
-        .modal button {
-            margin-top: 10px;
-        }     
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      border-radius: 10px;
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 25% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 20%;
+      text-align: center;
+    }
+
+    .modal button {
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -129,93 +130,93 @@
       <button id="allClearButton">All Clear</button>
       <div id="myModal" class="modal">
         <div class="modal-content">
-            <p>Are you sure you want to clear all inputs?</p>
-            <button id="confirmClearAll">Yes</button>
-            <button id="cancelClearAll">No</button>
+          <p>Are you sure you want to clear all inputs?</p>
+          <button id="confirmClearAll">Yes</button>
+          <button id="cancelClearAll">No</button>
         </div>
       </div>
     </div>
-    <a href="index.html" style="position:absolute; right:5px; bottom:5px; color: white;">Back to Home Page</a>
+    <a href="index.html" style="position:absolute; right:5px; bottom:5px; color: black;">Back to Home Page</a>
   </div>
 
-<script>
-  function celsiusToFahrenheit() {
+  <script>
+    function celsiusToFahrenheit() {
       var celsius = parseFloat(document.getElementById('celsius').value);
       var fahrenheit = (celsius * 9/5) + 32;
       document.getElementById('celsiusToFahrenheitResult').innerHTML = fahrenheit + " F";
-  }
+    }
 
-  function fahrenheitToCelsius() {
+    function fahrenheitToCelsius() {
       var fahrenheit = parseFloat(document.getElementById('fahrenheit').value);
       var celsius = (fahrenheit - 32) * 5/9;
       document.getElementById('fahrenheitToCelsiusResult').innerHTML = celsius + " C";
-  }
+    }
 
-  function metersToFeet() {
+    function metersToFeet() {
       var meters = parseFloat(document.getElementById('meters').value);
       var feet = meters * 3.28084;
       document.getElementById('metersToFeetResult').innerHTML = feet + " ft";
-  }
+    }
 
-  function feetToMeters() {
+    function feetToMeters() {
       var feet = parseFloat(document.getElementById('feet').value);
       var meters = feet / 3.28084;
       document.getElementById('feetToMetersResult').innerHTML = meters + " m";
-  }
+    }
 
-  function clearButton(targetInputId, targetResultId) {
+    function clearButton(targetInputId, targetResultId) {
       var input = document.getElementById(targetInputId);
       var output = document.getElementById(targetResultId);
       input.value = "";
       output.innerHTML = "";
-  }
+    }
 
-  function clearAllButton() {
+    function clearAllButton() {
       var inputs = ['celsius', 'fahrenheit', 'meters', 'feet'];
       var outputs = ['celsiusToFahrenheitResult', 'fahrenheitToCelsiusResult', 'metersToFeetResult', 'feetToMetersResult'];
 
       for (var i = 0; i < inputs.length; i++) {
-          clearButton(inputs[i], outputs[i]);
+        clearButton(inputs[i], outputs[i]);
       }
-  }
+    }
 
-  function clearButtonConfirmation(targetInputId, targetResultId) {
+    function clearButtonConfirmation(targetInputId, targetResultId) {
       var modal = document.getElementById('myModal');
       modal.style.display = "block";
       var confirmButton = document.getElementById('confirmClearAll');
       var cancelButton = document.getElementById('cancelClearAll');
       
       confirmButton.onclick = function () {
-          clearAllButton();
-          modal.style.display = "none";
+        clearAllButton();
+        modal.style.display = "none";
       }
 
       cancelButton.onclick = function () {
-          modal.style.display = "none";
+        modal.style.display = "none";
       }
-  }
+    }
 
-  document.getElementById("clearer1").addEventListener("click", function () {
+    document.getElementById("clearer1").addEventListener("click", function () {
       clearButtonConfirmation("celsius", "celsiusToFahrenheitResult");
-  });
-  document.getElementById("clearer2").addEventListener("click", function () {
+    });
+    document.getElementById("clearer2").addEventListener("click", function () {
       clearButtonConfirmation("fahrenheit", "fahrenheitToCelsiusResult");
-  });
-  document.getElementById("clearer3").addEventListener("click", function () {
+    });
+    document.getElementById("clearer3").addEventListener("click", function () {
       clearButtonConfirmation("meters", "metersToFeetResult");
-  });
-  document.getElementById("clearer4").addEventListener("click", function () {
+    });
+    document.getElementById("clearer4").addEventListener("click", function () {
       clearButtonConfirmation("feet", "feetToMetersResult");
-  });
+    });
 
-  document.getElementById("allClearButton").addEventListener("click", function () {
+    document.getElementById("allClearButton").addEventListener("click", function () {
       clearButtonConfirmation();
-  });
+    });
 
-  document.getElementById("cancelClearAll").onclick = function () {
+    document.getElementById("cancelClearAll").onclick = function () {
       modal.style.display = "none";
-  }
-</script>
+    }
+  </script>
 
 </body>
 </html>
