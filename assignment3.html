@@ -10,7 +10,6 @@
             margin: 0;
             padding: 0;
         }
-
         body {
             font-family: Arial, sans-serif;
             width: 100%;
@@ -19,7 +18,6 @@
             background-size: cover;
             background-repeat: no-repeat;
         }
-
         .container {
             max-width: 500px;
             margin: auto;
@@ -30,24 +28,21 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             margin-top: 100px;
         }
-
         h1 {
             margin-bottom: 10px;
             color: black;
         }
-
         label {
             font-weight: bold;
             color: black;
         }
-
         input[type="number"] {
             width: 90%;
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
+            text-align: right;
         }
-
         button {
             background-color: black;
             color: white;
@@ -56,26 +51,49 @@
             border-radius: 5px;
             cursor: pointer;
         }
-
         button:hover {
             background-color: #5FFFDF;
         }
-
         .result {
             margin-top: 20px;
             font-size: 18px;
             color: black;
         }
-
         .back-to-home {
             position: absolute;
             right: 5px;
             bottom: 5px;
             color: black;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .modal-content button {
+            margin: 5px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
     </style>
 </head>
-
 <body>
     <div class="container">
         <h1>Loop Calculation</h1>
@@ -83,13 +101,20 @@
         <input type="number" id="number">
         <br><br>
         <button onclick="calculate()">Calculate</button>
+        <button onclick="clearButton()">Clear</button>
         <div class="result">
             <p id="factorial"></p>
             <p id="sum"></p>
             <p id="average"></p>
         </div>
     </div>
-
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <p>Are you sure you want to clear?</p>
+            <button id="confirmClear">Clear</button>
+            <button id="cancelClear">Cancel</button>
+        </div>
+    </div>
     <script>
         function calculate() {
             var number = parseInt(document.getElementById("number").value);
@@ -102,12 +127,31 @@
                 sum += i;
                 i++;
             }
-
             var average = sum / number;
-
             document.getElementById("factorial").innerHTML = "Factorial: " + factorial;
             document.getElementById("sum").innerHTML = "Sum: " + sum;
             document.getElementById("average").innerHTML = "Average: " + average;
+        }
+
+        function clearButton() {
+            var modal = document.getElementById('myModal');
+            modal.style.display = "block";
+
+            var confirmButton = document.getElementById('confirmClear');
+            var cancelButton = document.getElementById('cancelClear');
+
+            confirmButton.onclick = function () {
+                var input = document.getElementById('number');
+                input.value = "";
+                document.getElementById("factorial").innerHTML = "";
+                document.getElementById("sum").innerHTML = "";
+                document.getElementById("average").innerHTML = "";
+                modal.style.display = "none";
+            };
+
+            cancelButton.onclick = function () {
+                modal.style.display = "none";
+            };
         }
     </script>
 
